@@ -17,7 +17,7 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+  'css/**/*.css',
 ];
 
 
@@ -26,14 +26,14 @@ var cssFilesToInject = [
 var jsFilesToInject = [
 
   // Load sails.io before everything else
-  'js/dependencies/sails.io.js',
+  // 'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/**/*.js',
+  // 'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js'
+  'js/**/*.js',
 ];
 
 
@@ -57,7 +57,7 @@ var templateFilesToInject = [
 
 
 // Default path for public folder (see documentation for more information)
-var tmpPath = '.tmp/public/';
+var tmpPath = 'client/build/static/';
 
 // Prefix relative paths to source files so they point to the proper locations
 // (i.e. where the other Grunt tasks spit them out, or in some cases, where
@@ -65,16 +65,16 @@ var tmpPath = '.tmp/public/';
 module.exports.cssFilesToInject = cssFilesToInject.map(function(cssPath) {
   // If we're ignoring the file, make sure the ! is at the beginning of the path
   if (cssPath[0] === '!') {
-    return require('path').join('!.tmp/public/', cssPath.substr(1));
+    return require('path').join(`!${tmpPath}`, cssPath.substr(1));
   }
-  return require('path').join('.tmp/public/', cssPath);
+  return require('path').join(tmpPath, cssPath);
 });
 module.exports.jsFilesToInject = jsFilesToInject.map(function(jsPath) {
   // If we're ignoring the file, make sure the ! is at the beginning of the path
   if (jsPath[0] === '!') {
-    return require('path').join('!.tmp/public/', jsPath.substr(1));
+    return require('path').join(`!${tmpPath}`, jsPath.substr(1));
   }
-  return require('path').join('.tmp/public/', jsPath);
+  return require('path').join(tmpPath, jsPath);
 });
 module.exports.templateFilesToInject = templateFilesToInject.map(function(tplPath) {
   // If we're ignoring the file, make sure the ! is at the beginning of the path

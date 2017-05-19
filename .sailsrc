@@ -7,5 +7,10 @@
     "orm": false,
     "pubsub": false,
     "blueprints": false
+  },
+
+  "paths": {
+    "tmp": "client/build",
+    "public": "client/build/static"
   }
 }
